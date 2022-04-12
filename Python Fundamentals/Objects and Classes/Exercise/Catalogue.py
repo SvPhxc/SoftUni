@@ -5,10 +5,16 @@ class Catalogue:
     def add_product(self, poduct_name):
         self.products.append(poduct_name)
     def get_by_letter(self, letter):
-        return [el for el in self.products if el.startswith(letter)]
+        filtered = []
+        for i in self.products:
+            if i[0] == letter:
+                filtered.append(i)
+        return filtered
     def __repr__(self):
-        result = f"Items in the {self.catalogue} catalogue:\n"
-        result += '\n'.join(sorted(self.products))
+
+        result = f"Items in the {''.join(self.catalogue)} catalogue:\n"
+        for x in sorted(self.products):
+            result += f"{''.join(x)}\n"
         return result
 
 catalogue = Catalogue("Furniture")
